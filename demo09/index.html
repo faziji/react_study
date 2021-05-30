@@ -11,12 +11,19 @@
     <script type="text/babel">
       class Input extends React.Component {
         constructor(props) {
-          super(props)
+          super(props);
           this.state = {
-            value: 'Hello!'
-          }
-          this.handleChange = this.handleChange.bind(this)
+            value: "Hello!",
+          };
+          this.handleChange = this.handleChange.bind(this);
         }
+
+        /* 
+          添加挂载和卸载钩子函数
+        */
+        componentDidMount() {}
+        componentWillUnmount() {}
+
         handleChange(event) {
           this.setState({ value: event.target.value });
         }
@@ -30,8 +37,8 @@
           );
         }
       }
-        
-      ReactDOM.render(<Input/>, document.getElementById('example'));
+
+      ReactDOM.render(<Input />, document.getElementById("example"));
     </script>
   </body>
 </html>

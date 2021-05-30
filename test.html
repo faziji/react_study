@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script type="text/babel">
+      class Clock extends React.Component {
+        constructor(props) {
+          super(props),
+            (this.state = {
+              date: new Date(1111123233433),
+            });
+        }
+        /* 
+          添加挂载和卸载钩子函数
+        */
+        componentDidMount() {
+          this.timerID = setInterval(() => this.tick(), 200);
+        }
+
+        componentWillUnmount() {
+          clearInterval(this.timerID);
+        }
+
+        tick() {
+          this.setState({ date: new Date() });
+        }
+        render() {
+          return (
+            <div>
+              <h1>Hello World</h1>
+              <h2>{this.state.date.toLocaleDateString()}</h2>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<Clock />, document.getElementById("app"));
+    </script>
+  </body>
+</html>

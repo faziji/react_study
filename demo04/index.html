@@ -9,16 +9,33 @@
   <body>
     <div id="example"></div>
     <script type="text/babel">
-      class HelloMessage extends React.Component {
-        render() {
-          return <h1>Hello {this.props.name}</h1>;
-        }
+      const MyComponents = {
+        DatePicker: function DatePicker(props) {
+          return <div>Imagine a {props.color} datepicker here.</div>;
+        },
+      };
+
+      function BlueDatePicker() {
+        return <MyComponents.DatePicker color="blue" />;
       }
 
-      ReactDOM.render(
-        <HelloMessage name="John" />,
-        document.getElementById('example')
-      );
+      // class HelloMessage extends React.Component {
+      //   render() {
+      //     return <h1>Hello {this.props.name}</h1>;
+      //   }
+      // }
+      /*
+              上下等同
+                最好写上面的形式吧
+            */
+      function HelloMessage(props) {
+        return <h1>Hello {props.name}</h1>;
+      }
+
+      // 相当于将这个组件抽离出来
+      const element = <div><HelloMessage name="John" /><BlueDatePicker/></div>;
+
+      ReactDOM.render(element, document.getElementById("example"));
     </script>
   </body>
 </html>

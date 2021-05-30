@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="../build/react.development.js"></script>
+    <script src="../build/react-dom.development.js"></script>
+    <script src="../build/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      let names = ["Alice", "Emily", "Kate"];
+
+      const NamesList = function (props) {
+        const names = props.names;
+
+        const listItems = names.map(name =>
+          <li key={name.toString()}>{name}</li>
+        )
+        return (
+          <ul>{listItems}</ul>
+        )
+      };
+
+      ReactDOM.render(
+        <NamesList names={names} />,
+        document.getElementById("example")
+      );
+    </script>
+  </body>
+</html>
